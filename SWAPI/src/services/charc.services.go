@@ -18,7 +18,7 @@ func SearchCharcSrvices(char string) (*models.Charc, int, error) {
 	client := http.Client{
 		Timeout: 5 * time.Second,
 	}
-	url := "https://swapi.dev/api/people/" + char
+	url := "https://swapi.dev/api/" + char
 	request, requestErr := http.NewRequest(http.MethodGet, url, nil)
 	if requestErr != nil {
 		fmt.Printf("Erreur initialisiation requete - %s\n", requestErr.Error())
