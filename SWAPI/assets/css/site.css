@@ -1,0 +1,61 @@
+/* Star Wars inspired dark theme - site.css */
+:root{
+    --bg:#07070a;
+    --panel:#0f1720;
+    --muted:#9aa4b2;
+    --accent:#ffd54a;
+    --link:#cbd5e1;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--link);}
+
+/* Starfield canvas (home) */
+#starfield{position:fixed;inset:0;z-index:0;display:block}
+body.scene.loaded main, body.scene.loaded header, body.scene.loaded footer{position:relative;z-index:1}
+
+/* Navbar */
+.bar_de_nav{background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(5,5,10,0.85));backdrop-filter: blur(4px);border-bottom:1px solid rgba(255,255,255,0.03)}
+.navbar{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:12px}
+.nav-left,.nav-right{display:flex;gap:14px;align-items:center}
+.nav-center{flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+.nav-logo{height:42px;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.6));}
+
+.navbar a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:6px;transition:all .18s ease}
+.navbar a:hover{color:var(--accent);background:rgba(255,255,255,0.02);transform:translateY(-1px)}
+
+/* Layout containers */
+.wrap{max-width:1100px;margin:36px auto;padding:0 16px}
+.hero_section{display:flex;align-items:center;justify-content:center;min-height:56vh}
+.descrip_para{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:28px;border-radius:10px}
+.call_to_action{display:inline-block;margin-top:14px;padding:10px 14px;background:var(--accent);color:#0b0b0b;border-radius:8px;text-decoration:none;font-weight:600}
+
+/* Cards / grid */
+.grid-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:20px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+.card h2{margin:0 0 8px;color:var(--accent)}
+.info p{margin:6px 0;color:var(--muted)}
+
+/* Footer */
+.les_droits{max-width:1100px;margin:40px auto;padding:18px 16px;color:var(--muted);text-align:center}
+
+/* Pagination/buttons */
+.btn,.btn-nav{display:inline-block;padding:8px 12px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);border-radius:6px;text-decoration:none}
+.btn:hover,.btn-nav:hover{background:rgba(255,255,255,0.02);color:var(--accent)}
+
+/* Small screens */
+@media(max-width:720px){
+    .nav-left,.nav-right{display:none}
+    .nav-center{flex:1}
+    .nav-logo{height:36px}
+    .wrap{margin:18px auto}
+}
+
+/* Accessibility */
+.navbar a:focus{outline:2px solid rgba(255,213,74,0.18);outline-offset:2px}
+
+/* Utility */
+.titre_descrip{color:var(--accent)}
+.empty-msg{color:var(--muted)}
+
+/* Specific tweaks for the homepage hero text to stand out */
+.etude_describ{color:var(--accent);margin-top:0}

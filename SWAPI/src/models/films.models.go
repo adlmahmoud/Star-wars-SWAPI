@@ -12,3 +12,10 @@ type Films struct {
 	Vehicle       []Veheicles `json:"vehicles"`
 	Specie        []Species   `json:"species"`
 }
+
+type FilmsResponse struct {
+	Count    int     `json:"count"`
+	Next     string  `json:"next"`
+	Previous string  `json:"previous"`
+	Results  []Films `json:"results"`
+}

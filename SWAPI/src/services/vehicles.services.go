@@ -6,6 +6,7 @@ recuperer l'api:
 URL= "https://swapi.dev/api/vehicles/"
 */
 import (
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -13,11 +14,16 @@ import (
 	"time"
 )
 
-func SearchVehicle(char string) (*models.Veheicles, int, error) {
-	client := http.Client{
-		Timeout: 5 * time.Second,
+func SearchVehicle(char string, page string) (*models.VeheiclesRep, int, error) {
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
-	url := "https://swapi.dev/api/" + char
+
+	client := http.Client{
+		Timeout:   5 * time.Second,
+		Transport: tr,
+	}
+	url := "https://swapi.dev/api/" + char + "?page=" + page
 	request, requestErr := http.NewRequest(http.MethodGet, url, nil)
 	if requestErr != nil {
 		fmt.Printf("Erreur initialisiation requete - %s\n", requestErr.Error())
@@ -33,7 +39,7 @@ func SearchVehicle(char string) (*models.Veheicles, int, error) {
 		fmt.Printf("Erreur init requete - %d, status %s\n", response.StatusCode, response.Status)
 	}
 
-	var vehicle models.Veheicles
+	var vehicle models.VeheiclesRep
 
 	decoderErr := json.NewDecoder(response.Body).Decode(&vehicle)
 	if decoderErr != nil {

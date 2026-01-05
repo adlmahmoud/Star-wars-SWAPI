@@ -14,3 +14,10 @@ type Species struct {
 	People           []Charc   `json:"people"`
 	Film             []Films   `json:"films"`
 }
+
+type SpeciesRep struct {
+	Count    int       `json:"count"`
+	Next     string    `json:"next"`
+	Previous string    `json:"previous"`
+	Results  []Species `json:"results"`
+}

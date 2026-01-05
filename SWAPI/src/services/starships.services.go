@@ -6,6 +6,7 @@ recuperer l'api:
 URL= "https://swapi.dev/api/starships/"
 */
 import (
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -13,11 +14,16 @@ import (
 	"time"
 )
 
-func SearchStarship(char string) (*models.Starships, int, error) {
-	client := http.Client{
-		Timeout: 5 * time.Second,
+func SearchStarship(char string, page string) (*models.StarshipsResponse, int, error) {
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
-	url := "https://swapi.dev/api/" + char
+
+	client := http.Client{
+		Timeout:   5 * time.Second,
+		Transport: tr,
+	}
+	url := "https://swapi.dev/api/" + char + "?page=" + page
 	request, requestErr := http.NewRequest(http.MethodGet, url, nil)
 	if requestErr != nil {
 		fmt.Printf("Erreur initialisiation requete - %s\n", requestErr.Error())
@@ -33,11 +39,11 @@ func SearchStarship(char string) (*models.Starships, int, error) {
 		fmt.Printf("Erreur init requete - %d, status %s\n", response.StatusCode, response.Status)
 	}
 
-	var starships models.Starships
+	var starshipsRep models.StarshipsResponse
 
-	decoderErr := json.NewDecoder(response.Body).Decode(&starships)
+	decoderErr := json.NewDecoder(response.Body).Decode(&starshipsRep)
 	if decoderErr != nil {
 		fmt.Printf("Erreur decodage JSON - %s\n", decoderErr.Error())
 	}
-	return &starships, response.StatusCode, nil
+	return &starshipsRep, response.StatusCode, nil
 }

@@ -6,6 +6,7 @@ recuperer l'api:
 URL= "https://swapi.dev/api/species/"
 */
 import (
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -13,11 +14,16 @@ import (
 	"time"
 )
 
-func SearchSpecies(char string) (*models.Species, int, error) {
-	client := http.Client{
-		Timeout: 5 * time.Second,
+func SearchSpecies(char string, page string) (*models.SpeciesRep, int, error) {
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
-	url := "https://swapi.dev/api/" + char
+
+	client := http.Client{
+		Timeout:   5 * time.Second,
+		Transport: tr,
+	}
+	url := "https://swapi.dev/api/" + char + "?page=" + page
 	request, requestErr := http.NewRequest(http.MethodGet, url, nil)
 	if requestErr != nil {
 		fmt.Printf("Erreur initialisiation requete - %s\n", requestErr.Error())
@@ -33,7 +39,7 @@ func SearchSpecies(char string) (*models.Species, int, error) {
 		fmt.Printf("Erreur init requete - %d, status %s\n", response.StatusCode, response.Status)
 	}
 
-	var specie models.Species
+	var specie models.SpeciesRep
 
 	decoderErr := json.NewDecoder(response.Body).Decode(&specie)
 	if decoderErr != nil {

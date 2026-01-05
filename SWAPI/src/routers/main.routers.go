@@ -2,12 +2,13 @@ package routers
 
 import (
 	"net/http"
+	"swapi/src/controllers"
 )
 
 func MainRouter() *http.ServeMux {
 	mainRouter := http.NewServeMux()
-
-	errorRouter(mainRouter)
+	mainRouter.HandleFunc("/", controllers.DisplayIndex)
+	SpeciesRouters(mainRouter)
 	CharcRouters(mainRouter)
 	PlanetsRouters(mainRouter)
 	StarshipsRouters(mainRouter)

@@ -1,0 +1,58 @@
+{{define "vehicles"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Star Wars - Véhicules</title>
+    <link rel="stylesheet" href="/static/css/site.css">
+</head>
+<body>
+    <header class="bar_de_nav">
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="/characters">Personnages</a>
+                <a href="/films">Films</a>
+                <a href="/planets">Planètes</a>
+            </div>
+            <div class="nav-center">
+                <a href="/"><img src="/static/photos/Star_Wars_Logo.svg-removebg-preview.png" alt="Star Wars" class="nav-logo"></a>
+            </div>
+            <div class="nav-right">
+                <a href="/species">Espèces</a>
+                <a href="/starships">Vaisseaux</a>
+                <a href="/vehicles">Véhicules</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="grid-container">
+        {{range .Results}}
+        <div class="card">
+            <h2>{{.Name_v}}</h2>
+            <div class="info-details">
+                <p><strong>Modèle :</strong> {{.Model}}</p>
+                <p><strong>Fabricant :</strong> {{.Manufacturer}}</p>
+                <p><strong>Classe de véhicule :</strong> {{.Vehicle_class}}</p>
+                <p><strong>Coût :</strong> {{if .Cost_in_credits}}{{.Cost_in_credits}} crédits{{else}}Inconnu{{end}}</p>
+                <p><strong>Longueur :</strong> {{.Length}} m</p>
+                <p><strong>Équipage / Passagers :</strong> {{.Crew}} / {{.Passengers}}</p>
+                <p><strong>Capacité de chargement :</strong> {{.Cargo_capacity}} kg</p>
+                <p><strong>Consommables :</strong> {{.Consumables}}</p>
+            </div>
+        </div>
+        {{else}}
+        <p class="empty-msg">Aucun véhicule trouvé.</p>
+        {{end}}
+    </main>
+
+    <footer class="pagination">
+        {{if .Previous}}
+            <a href="?page=1" class="btn-nav">Précédent</a>
+        {{end}}
+        {{if .Next}}
+            <a href="?page=2" class="btn-nav">Suivant</a>
+        {{end}}
+    </footer>
+</body>
+</html>
+{{end}}

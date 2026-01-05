@@ -12,3 +12,10 @@ type Planets struct {
 	Residents       []Charc `json:"residents"`
 	Films           []Films `json:"films"`
 }
+
+type PlanetsResponse struct {
+	Count    int       `json:"count"`
+	Next     string    `json:"next"`
+	Previous string    `json:"previous"`
+	Results  []Planets `json:"results"`
+}

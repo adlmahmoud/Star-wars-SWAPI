@@ -14,3 +14,10 @@ type Veheicles struct {
 	Vehicle_class          string  `json:"vehicle_class"`
 	Film                   []Films `json:"films"`
 }
+
+type VeheiclesRep struct {
+	Count    int         `json:"count"`
+	Next     string      `json:"next"`
+	Previous string      `json:"previous"`
+	Results  []Veheicles `json:"results"`
+}

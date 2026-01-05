@@ -1,0 +1,49 @@
+{{define "starships"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Star Wars - Vaisseaux</title>
+    <link rel="stylesheet" href="/static/css/site.css">
+</head>
+<body>
+    <header class="bar_de_nav">
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="/characters">Personnages</a>
+                <a href="/films">Films</a>
+                <a href="/planets">Planètes</a>
+            </div>
+            <div class="nav-center">
+                <a href="/"><img src="/SWAPI/assets/photos/Star_Wars_Logo.svg-removebg-preview.png" alt="Star Wars" class="nav-logo"></a>
+            </div>
+            <div class="nav-right">
+                <a href="/species">Espèces</a>
+                <a href="/starships">Vaisseaux</a>
+                <a href="/vehicles">Véhicules</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="grid-container">
+        {{range .Results}}
+        <div class="card">
+            <h2>{{.Name_St}}</h2>
+            <div class="info">
+                <p><strong>Modèle :</strong> {{.Model}}</p>
+                <p><strong>Fabricant :</strong> {{.Manufacturer}}</p>
+                <p><strong>Classe :</strong> {{.Starship_class}}</p>
+                <p><strong>Coût :</strong> {{.Cost_in_credits}} crédits</p>
+                <p><strong>Équipage :</strong> {{.Crew}}</p>
+            </div>
+        </div>
+        {{end}}
+    </main>
+
+    <footer class="pagination">
+        {{if .Previous}}<a href="?page=1" class="btn">Précédent</a>{{end}}
+        {{if .Next}}<a href="?page=2" class="btn">Suivant</a>{{end}}
+    </footer>
+</body>
+</html>
+{{end}}

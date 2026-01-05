@@ -9,12 +9,16 @@ import (
 )
 
 func Displayfilms(w http.ResponseWriter, r *http.Request) {
+	page := r.URL.Query().Get("page")
+	if page == "" {
+		page = "1"
+	}
 	char := "films/"
-	films, status, err := services.SearchFilms(char)
+	films, status, err := services.SearchFilms(char, page)
 	if status != http.StatusOK || err != nil {
 		helpers.RedirectToError(w, r, status, "Erreur lors de la récupération des albums")
 		fmt.Println(err)
 		return
 	}
-	templates.RenderTemplate(w, r, "films.html", films)
+	templates.RenderTemplate(w, r, "films", films)
 }

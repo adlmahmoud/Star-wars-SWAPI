@@ -15,3 +15,10 @@ type Starships struct {
 	Starship_class         string  `json:"starship_class"`
 	Film                   []Films `json:"films"`
 }
+
+type StarshipsResponse struct {
+	Count    int         `json:"count"`
+	Next     string      `json:"next"`
+	Previous string      `json:"previous"`
+	Results  []Starships `json:"results"`
+}

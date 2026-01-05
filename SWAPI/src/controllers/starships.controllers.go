@@ -9,8 +9,12 @@ import (
 )
 
 func DisplayStarships(w http.ResponseWriter, r *http.Request) {
+	page := r.URL.Query().Get("page")
+	if page == "" {
+		page = "1"
+	}
 	char := "starships/"
-	starships, status, err := services.SearchStarship(char)
+	starships, status, err := services.SearchStarship(char, page)
 	if status != http.StatusOK || err != nil {
 		helpers.RedirectToError(w, r, status, "Erreur lors de la récupération des albums")
 		fmt.Println(err)

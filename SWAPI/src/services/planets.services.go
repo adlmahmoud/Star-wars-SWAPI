@@ -6,6 +6,7 @@ recuperer l'api:
 URL= "https://swapi.dev/api/planets/"
 */
 import (
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -13,11 +14,16 @@ import (
 	"time"
 )
 
-func SearchPlanets(char string) (*models.Planets, int, error) {
-	client := http.Client{
-		Timeout: 5 * time.Second,
+func SearchPlanets(char string, page string) (*models.PlanetsResponse, int, error) {
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
-	url := "https://swapi.dev/api/" + char
+
+	client := http.Client{
+		Timeout:   5 * time.Second,
+		Transport: tr,
+	}
+	url := "https://swapi.dev/api/" + char + "?page=" + page
 	request, requestErr := http.NewRequest(http.MethodGet, url, nil)
 	if requestErr != nil {
 		fmt.Printf("Erreur initialisiation requete - %s\n", requestErr.Error())
@@ -33,11 +39,11 @@ func SearchPlanets(char string) (*models.Planets, int, error) {
 		fmt.Printf("Erreur init requete - %d, status %s\n", response.StatusCode, response.Status)
 	}
 
-	var planet models.Planets
+	var planetRep models.PlanetsResponse
 
-	decoderErr := json.NewDecoder(response.Body).Decode(&planet)
+	decoderErr := json.NewDecoder(response.Body).Decode(&planetRep)
 	if decoderErr != nil {
 		fmt.Printf("Erreur decodage JSON - %s\n", decoderErr.Error())
 	}
-	return &planet, response.StatusCode, nil
+	return &planetRep, response.StatusCode, nil
 }

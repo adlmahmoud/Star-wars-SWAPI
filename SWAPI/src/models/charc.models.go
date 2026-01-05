@@ -5,7 +5,7 @@ type Charc struct {
 	Name_c      string      `json:"name"`
 	Height      int         `json:"height"`
 	Mass        int         `json:"mass"`
-	Haire_color string      `json:"haire_color"`
+	Haire_color string      `json:"hair_color"`
 	Birth_year  string      `json:"birth_year"`
 	Gender      string      `json:"gender"`
 	Species     []Species   `json:"species"`
@@ -13,4 +13,11 @@ type Charc struct {
 	Films       []Films     `json:"films"`
 	Vehicle     []Veheicles `json:"vehicles"`
 	Starship    []Starships `json:"starships"`
+}
+
+type CharcResponse struct {
+	Count    int     `json:"count"`
+	Next     string  `json:"next"`
+	Previous string  `json:"previous"`
+	Results  []Charc `json:"results"`
 }

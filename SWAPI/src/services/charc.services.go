@@ -7,6 +7,7 @@ URL= "https://swapi.dev/api/people/"
 */
 
 import (
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -14,11 +15,16 @@ import (
 	"time"
 )
 
-func SearchCharcSrvices(char string) (*models.Charc, int, error) {
-	client := http.Client{
-		Timeout: 5 * time.Second,
+func SearchCharcSrvices(char string, page string) (*models.CharcResponse, int, error) {
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
-	url := "https://swapi.dev/api/" + char
+
+	client := http.Client{
+		Timeout:   5 * time.Second,
+		Transport: tr,
+	}
+	url := "https://swapi.dev/api/" + char + "?page=" + page
 	request, requestErr := http.NewRequest(http.MethodGet, url, nil)
 	if requestErr != nil {
 		fmt.Printf("Erreur initialisiation requete - %s\n", requestErr.Error())
@@ -27,6 +33,7 @@ func SearchCharcSrvices(char string) (*models.Charc, int, error) {
 	response, responseErr := client.Do(request)
 	if responseErr != nil {
 		fmt.Printf("Erreur requete HTTP - %s\n", responseErr.Error())
+		return nil, 0, responseErr
 	}
 	defer response.Body.Close()
 
@@ -34,11 +41,11 @@ func SearchCharcSrvices(char string) (*models.Charc, int, error) {
 		fmt.Printf("Erreur init requete - %d, status %s\n", response.StatusCode, response.Status)
 	}
 
-	var charc models.Charc
+	var charcRep models.CharcResponse
 
-	decoderErr := json.NewDecoder(response.Body).Decode(&charc)
+	decoderErr := json.NewDecoder(response.Body).Decode(&charcRep)
 	if decoderErr != nil {
 		fmt.Printf("Erreur decodage JSON - %s\n", decoderErr.Error())
 	}
-	return &charc, response.StatusCode, nil
+	return &charcRep, response.StatusCode, nil
 }
