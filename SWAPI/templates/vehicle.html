@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Star Wars - Véhicules</title>
-    <link rel="stylesheet" href="/static/css/site.css">
+    <link rel="stylesheet" href="/static/css/vehicules.css">
 </head>
 <body>
     <header class="bar_de_nav">
@@ -51,6 +51,8 @@
         {{end}}
         {{if .Next}}
             <a href="?page=2" class="btn-nav">Suivant</a>
+        {{else}}
+            <span class="btn-nav" style="opacity:0.4;cursor:not-allowed;">Suivant</span>
         {{end}}
     </footer>
 </body>

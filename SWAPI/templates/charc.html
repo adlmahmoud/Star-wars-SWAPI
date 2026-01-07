@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Star Wars - Personnages</title>
-    <link rel="stylesheet" href="/static/css/site.css">
+    <link rel="stylesheet" href="/static/css/personnages.css">
 </head>
 <body>
     <header class="bar_de_nav">
@@ -44,7 +44,7 @@
 
     <footer class="pagination">
         {{if .Previous}}<a href="?page=1" class="btn">Précédent</a>{{end}}
-        {{if .Next}}<a href="?page=2" class="btn">Suivant</a>{{end}}
+        {{if .Next}}<a href="?page=2" class="btn">Suivant</a>{{else}}<span class="btn" style="opacity:0.4;cursor:not-allowed;">Suivant</span>{{end}}
     </footer>
 </body>
 </html>

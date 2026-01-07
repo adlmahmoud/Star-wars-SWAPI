@@ -1,0 +1,57 @@
+/* Films page - films.css */
+:root{
+    --bg:#07070a;
+    --panel:#0f1720;
+    --muted:#9aa4b2;
+    --accent:#ffd54a;
+    --link:#cbd5e1;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--link);}
+
+/* Navbar */
+.bar_de_nav{background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(5,5,10,0.85));backdrop-filter: blur(4px);border-bottom:1px solid rgba(255,255,255,0.03);position:sticky;top:0;z-index:100}
+.navbar{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:12px}
+.nav-left,.nav-right{display:flex;gap:14px;align-items:center}
+.nav-center{flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+.nav-logo{height:42px;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.6));}
+
+.navbar a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:6px;transition:all .18s ease}
+.navbar a:hover{color:var(--accent);background:rgba(255,255,255,0.02);transform:translateY(-1px)}
+
+/* Films list */
+.film-list{max-width:900px;margin:40px auto;padding:0 16px}
+.film-card{background:linear-gradient(135deg, rgba(15,23,32,0.6), rgba(15,23,32,0.3));padding:32px;margin-bottom:24px;border-radius:12px;border-left:5px solid var(--accent);box-shadow:0 8px 32px rgba(0,0,0,0.4);transition:all 0.3s ease}
+
+.film-card:hover{box-shadow:0 12px 48px rgba(255,213,74,0.15);transform:translateY(-4px)}
+
+.film-card h2{color:var(--accent);font-size:24px;margin:0 0 12px;text-transform:uppercase;letter-spacing:1px}
+.film-card .director{color:var(--muted);margin:8px 0;font-size:14px}
+.film-card .producer{color:var(--muted);margin:8px 0;font-size:14px}
+.film-card .date{color:var(--accent);margin:8px 0;font-size:14px;font-weight:500}
+
+.crawl{background:rgba(255,213,74,0.05);padding:20px;border-radius:8px;margin-top:16px;border:1px solid rgba(255,213,74,0.1);max-height:200px;overflow-y:auto}
+.crawl p{color:var(--link);line-height:1.8;margin:0;font-style:italic}
+
+/* Pagination */
+.pagination{max-width:1100px;margin:40px auto;padding:20px 16px;display:flex;gap:12px;justify-content:center;align-items:center}
+
+.btn, .btn-nav{display:inline-block;padding:10px 20px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);border-radius:6px;text-decoration:none;transition:all 0.3s ease;font-weight:500}
+.btn:hover, .btn-nav:hover{background:rgba(255,255,255,0.02);color:var(--accent);border-color:var(--accent);box-shadow:0 4px 12px rgba(255,213,74,0.2)}
+.btn:disabled, .btn-nav:disabled{opacity:0.4;cursor:not-allowed}
+
+/* Footer */
+.les_droits{max-width:1100px;margin:40px auto;padding:18px 16px;color:var(--muted);text-align:center;border-top:1px solid rgba(255,213,74,0.1)}
+
+/* Accessibility */
+.navbar a:focus{outline:2px solid rgba(255,213,74,0.18);outline-offset:2px}
+
+/* Small screens */
+@media(max-width:720px){
+    .nav-left,.nav-right{display:none}
+    .nav-center{flex:1}
+    .nav-logo{height:36px}
+    .film-card{padding:20px;margin-bottom:16px}
+    .film-card h2{font-size:18px}
+    .crawl{max-height:150px}
+}

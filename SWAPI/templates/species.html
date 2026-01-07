@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Star Wars - Espèces</title>
-    <link rel="stylesheet" href="/static/css/site.css">
+    <link rel="stylesheet" href="/static/css/especes.css">
 </head>
 <body>
     <header class="bar_de_nav">
@@ -15,7 +15,7 @@
                 <a href="/planets">Planètes</a>
             </div>
             <div class="nav-center">
-                <a href="/"><img src="/SWAPI/assets/photos/Star_Wars_Logo.svg-removebg-preview.png" alt="Star Wars" class="nav-logo"></a>
+                <a href="/"><img src="/static/photos/Star_Wars_Logo.svg-removebg-preview.png" alt="Star Wars" class="nav-logo"></a>
             </div>
             <div class="nav-right">
                 <a href="/species">Espèces</a>
@@ -51,6 +51,8 @@
         {{end}}
         {{if .Next}}
             <a href="?page=2" class="btn-nav">Suivant</a>
+        {{else}}
+            <span class="btn-nav" style="opacity:0.4;cursor:not-allowed;">Suivant</span>
         {{end}}
     </footer>
 </body>
