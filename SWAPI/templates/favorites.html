@@ -1,0 +1,66 @@
+{{define "favorites"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mes Favoris - Star Wars</title>
+    <link rel="stylesheet" href="/static/css/site.css">
+    <link rel="stylesheet" href="/static/css/personnages.css">
+    <link rel="stylesheet" href="/static/css/search.css">
+    <link rel="stylesheet" href="/static/css/favorites.css">
+</head>
+<body>
+<header class="bar_de_nav">
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/characters">Personnages</a>
+            <a href="/films">Films</a>
+            <a href="/planets">Planètes</a>
+        </div>
+            <a href="/"><img src="/static/photos/Star_Wars_Logo.svg-removebg-preview.png" alt="Star Wars" class="nav-logo"></a>
+        </div>
+
+        <div class="nav-right">
+            <a href="/species">Espèces</a>
+            <a href="/starships">Vaisseaux</a>
+            <a href="/vehicles">Véhicules</a>
+            <a href="/favorites" class="nav-fav-link">★ Favoris</a>
+        </div>
+    </nav>
+</header>
+<div class="top-search-bar">
+        <form action="/search" method="GET" class="search-form">
+            <input type="text" name="query" placeholder="Rechercher..." required>
+            <button type="submit">GO</button>
+        </form>
+    </div>
+    <main class="wrap">
+        <h1 class="fav-header">Vos éléments sauvegardés</h1>
+        
+        <div id="favorites-container" class="grid-container">
+            {{range .}}
+            <div class="card">
+                <h2>{{.ID}}</h2>
+                <div class="info">
+                    <p><strong>Catégorie :</strong> {{.Type}}</p>
+                </div>
+                <button class="remove-btn" onclick="removeFavFromPage('{{.ID}}', '{{.Type}}')">
+                    Retirer des favoris
+                </button>
+            </div>
+            {{else}}
+            <p id="empty-message">
+                Votre liste de favoris est vide. Explorez la galaxie pour en ajouter !
+            </p>
+            {{end}}
+        </div>
+    </main>
+
+    <footer class="les_droits">
+        <p>Projet d'étude - Azul fella-wen</p>
+    </footer>
+
+    <script src="/static/js/favorites.js"></script>
+</body>
+</html>
+{{end}}

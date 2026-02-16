@@ -16,6 +16,7 @@ func MainRouter() *http.ServeMux {
 	FilmRouters(mainRouter)
 	errorRouter(mainRouter)
 	SearchRouters(mainRouter)
+	FavoritesRouters(mainRouter)
 	fileServer := http.FileServer(http.Dir("./../../assets"))
 	mainRouter.Handle("/static/", http.StripPrefix("/static/", fileServer))
 

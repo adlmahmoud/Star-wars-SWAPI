@@ -77,16 +77,6 @@ body.scene.loaded main, body.scene.loaded header, body.scene.loaded footer{posit
     .container_cards{grid-template-columns:1fr}
     .hero_section{min-height:auto}
 }
-.top-search-bar {
-    background-color: #151b24; /* Gris sombre bleuté */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 200; /* Au-dessus du reste */
-}
 
 .search-form {
     display: flex;

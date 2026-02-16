@@ -15,9 +15,45 @@ body.scene.loaded main, body.scene.loaded header, body.scene.loaded footer{posit
 
 /* Navbar */
 .bar_de_nav{background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(5,5,10,0.85));backdrop-filter: blur(4px);border-bottom:1px solid rgba(255,255,255,0.03)}
-.navbar{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:12px}
-.nav-left,.nav-right{display:flex;gap:14px;align-items:center}
-.nav-center{flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%; /* Utilise toute la largeur pour mieux voir le centrage */
+    padding: 10px 40px;
+}
+
+.nav-left {
+    flex: 1; /* Prend tout l'espace disponible à gauche */
+    display: flex;
+    justify-content: flex-start; /* Aligne le texte au début */
+    gap: 15px;
+}
+
+.nav-center {
+    flex: 0 0 auto; /* Ne bouge pas, reste à sa taille naturelle */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-right {
+    flex: 1; /* Prend exactement le même espace que nav-left à droite */
+    display: flex;
+    justify-content: flex-end; /* Pousse tout, y compris Favoris, à droite */
+    gap: 15px;
+    align-items: center;
+}
+
+/* Style du bouton favoris pour qu'il se détache bien à droite */
+.nav-fav-link {
+    color: #ffd54a !important;
+    border: 1px solid #ffd54a;
+    padding: 5px 15px !important;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-left: 10px; /* Espace supplémentaire */
+}
 .nav-logo{height:42px;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.6));}
 
 .navbar a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:6px;transition:all .18s ease}
@@ -59,17 +95,6 @@ body.scene.loaded main, body.scene.loaded header, body.scene.loaded footer{posit
 
 /* Specific tweaks for the homepage hero text to stand out */
 .etude_describ{color:var(--accent);margin-top:0}
-.top-search-bar {
-    background-color: #151b24; /* Gris sombre bleuté */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 200; /* Au-dessus du reste */
-}
-
 .search-form {
     display: flex;
     gap: 10px;

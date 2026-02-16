@@ -5,37 +5,50 @@
     <meta charset="UTF-8">
     <title>Star Wars - Vaisseaux</title>
     <link rel="stylesheet" href="/static/css/site.css">
+    <link rel="stylesheet" href="/static/css/vaisseaux.css">
     <link rel="stylesheet" href="/static/css/search.css">
+    <link rel="stylesheet" href="/static/css/favorites.css">
 </head>
 <body>
-    <header class="bar_de_nav">
-        <nav class="navbar">
-            <div class="nav-left">
-                <a href="/characters">Personnages</a>
-                <a href="/films">Films</a>
-                <a href="/planets">Planètes</a>
-            </div>
-            <div class="nav-center">
-                <a href="/"><img src="/static/photos/Star_Wars_Logo.svg-removebg-preview.png" alt="Star Wars" class="nav-logo"></a>
-            </div>
-            <div class="nav-right">
-                <a href="/species">Espèces</a>
-                <a href="/starships">Vaisseaux</a>
-                <a href="/vehicles">Véhicules</a>
-            </div>
-        </nav>
-    </header>
-    <body>
+  <header class="bar_de_nav">
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/characters">Personnages</a>
+            <a href="/films">Films</a>
+            <a href="/planets">Planètes</a>
+        </div>
+
+        <div class="nav-center">
+            <a href="/"><img src="/static/photos/Star_Wars_Logo.svg-removebg-preview.png" alt="Star Wars" class="nav-logo"></a>
+        </div>
+
+        <div class="nav-right">
+            <a href="/species">Espèces</a>
+            <a href="/starships">Vaisseaux</a>
+            <a href="/vehicles">Véhicules</a>
+            <a href="/favorites" class="nav-fav-link">★ Favoris</a>
+        </div>
+    </nav>
+</header>
     <div class="top-search-bar">
         <form action="/search" method="GET" class="search-form">
             <input type="text" name="query" placeholder="Rechercher..." required>
             <button type="submit">GO</button>
         </form>
     </div>
-    <header class="bar_de_nav">
     <main class="grid-container">
         {{range .Results}}
         <div class="card">
+            
+            <button class="fav-btn" data-id="{{.Name_St}}" data-type="starships" title="Ajouter aux favoris">
+                <svg class="death-star-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="9" cy="9" r="3" style="stroke:none; fill:rgba(0,0,0,0.3)"/> 
+                    <path d="M2 12 h20 M12 2 v20" style="stroke:rgba(0,0,0,0.2); stroke-width:0.5px; fill:none"/> 
+                    <path d="M4 6 h16 M4 18 h16" style="stroke:rgba(0,0,0,0.2); stroke-width:0.5px; fill:none"/>
+                </svg>
+            </button>
+
             <h2>{{.Name_St}}</h2>
             <div class="info">
                 <p><strong>Modèle :</strong> {{.Model}}</p>
@@ -50,8 +63,10 @@
 
     <footer class="pagination">
         {{if .Previous}}<a href="?page=1" class="btn">Précédent</a>{{end}}
-        {{if .Next}}<a href="?page=2" class="btn">Suivant</a>{{end}}
+        {{if .Next}}<a href="?page=2" class="btn">Suivant</a>{{else}}<span class="btn" style="opacity:0.4;cursor:not-allowed;">Suivant</span>{{end}}
     </footer>
+
+    <script src="/static/js/favorites.js"></script>
 </body>
 </html>
 {{end}}

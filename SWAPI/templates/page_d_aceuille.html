@@ -5,12 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Star Wars Fanpage</title>
+    <link rel="stylesheet" href="/static/css/site.css">
     <link rel="stylesheet" href="/static/css/page_accueil.css">
     <link rel="stylesheet" href="/static/css/search.css">
+    <link rel="stylesheet" href="/static/css/favorites.css">
     <meta name="theme-color" content="#000000">
 </head>
 <body class="scene loaded">
     <canvas id="starfield" aria-hidden="true"></canvas>
+
+    <div class="top-search-bar">
+    </div>
 
     <header class="bar_de_nav">
         <nav class="navbar">
@@ -26,17 +31,16 @@
                 <a href="/species">Espèces</a>
                 <a href="/starships">Vaisseaux</a>
                 <a href="/vehicles">Véhicules</a>
+                <a href="/favorites" class="nav-fav-link">★ Favoris</a>
             </div>
         </nav>
     </header>
-    <body>
     <div class="top-search-bar">
         <form action="/search" method="GET" class="search-form">
             <input type="text" name="query" placeholder="Rechercher..." required>
             <button type="submit">GO</button>
         </form>
     </div>
-    <header class="bar_de_nav">
     <main class="wrap">
         <section class="hero_section">
             <div class="descrip_para">
@@ -55,18 +59,18 @@
                 </div>
                 <div class="decrib_box">
                     <h4>La République</h4>
-                    <p>La République Galactique fut pendant des siècles le pilier de la paix dans la galaxie, une démocratie fondée sur la coopération entre des milliers de mondes. Dirigée par un Sénat chargé de préserver la justice et l’équilibre, elle incarnait l’espoir d’un ordre durable. Mais minée par la corruption, les inégalités et la peur, elle s’est affaiblie de l’intérieur. Lors des Guerres des Clones, le pouvoir se concentra entre les mains du Chancelier Suprême, et sous couvert de légalité, la République s’éteignit pour renaître sous une nouvelle forme : l’Empire Galactique.</p>
+                    <p>La République Galactique fut pendant des siècles le pilier de la paix dans la galaxie, une démocratie fondée sur la coopération entre des milliers de mondes. Dirigée par un Sénat chargé de préserver la justice et l’équilibre, elle incarnait l’espoir d’un ordre durable. Mais minée par la corruption, les inégalités et la peur, elle s’est affaiblie de l’intérieur.</p>
                 </div>
                 <div class="decrib_box">
                     <h4>Les Rebelles</h4>
-                    <p>Les Rebelles, aussi appelés l’Alliance Rebelle, sont un mouvement de résistance né face à l’oppression de l’Empire Galactique. Composée de combattants, de pilotes et de citoyens ordinaires, l’Alliance lutte pour restaurer la liberté, la justice et l’espoir dans la galaxie. Malgré des moyens limités face à la puissance impériale, les Rebelles s’appuient sur leur courage, leur solidarité et leur foi en un avenir meilleur pour défier la tyrannie et rallumer la flamme de la rébellion.</p>
+                    <p>Les Rebelles, aussi appelés l’Alliance Rebelle, sont un mouvement de résistance né face à l’oppression de l’Empire Galactique. Composée de combattants, de pilotes et de citoyens ordinaires, l’Alliance lutte pour restaurer la liberté, la justice et l’espoir dans la galaxie.</p>
                 </div>
             </div>
         </section>
 
         <section class="about_me">
             <h3 class="titre_pour_me">Qui suis-je ?</h3>
-            <p class="decrib_moi">Développeur passionné, explorant les technologies modernes pour donner vie à projets galactiques.</p>
+            <p class="decrib_moi">Développeur passionné, explorant les technologies modernes pour donner vie à des projets galactiques.</p>
             <div class="social_icons">
                 <a href="https://github.com/adlmahmoud" target="_blank">GitHub</a>
                 <a href="https://www.linkedin.com/in/mahmoud-adel-45868139b/" target="_blank">LinkedIn</a>

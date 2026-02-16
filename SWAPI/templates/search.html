@@ -9,32 +9,31 @@
     <link rel="stylesheet" href="/static/css/search.css">
 </head>
 <body>
+ <header class="bar_de_nav">
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/characters">Personnages</a>
+            <a href="/films">Films</a>
+            <a href="/planets">Planètes</a>
+        </div>
 
-    <div class="top-search-bar">
+            <a href="/"><img src="/static/photos/Star_Wars_Logo.svg-removebg-preview.png" alt="Star Wars" class="nav-logo"></a>
+        </div>
+
+        <div class="nav-right">
+            <a href="/species">Espèces</a>
+            <a href="/starships">Vaisseaux</a>
+            <a href="/vehicles">Véhicules</a>
+            <a href="/favorites" class="nav-fav-link">★ Favoris</a>
+        </div>
+    </nav>
+</header>
+<div class="top-search-bar">
         <form action="/search" method="GET" class="search-form">
-            <input type="text" name="query" value="{{.Query}}" placeholder="Nouvelle recherche..." required>
+            <input type="text" name="query" placeholder="Rechercher..." required>
             <button type="submit">GO</button>
         </form>
     </div>
-
-    <header class="bar_de_nav">
-        <nav class="navbar">
-            <div class="nav-left">
-                <a href="/characters">Personnages</a>
-                <a href="/films">Films</a>
-                <a href="/planets">Planètes</a>
-            </div>
-            <div class="nav-center">
-                <a href="/"><img src="/static/photos/Star_Wars_Logo.svg-removebg-preview.png" alt="Star Wars" class="nav-logo"></a>
-            </div>
-            <div class="nav-right">
-                <a href="/species">Espèces</a>
-                <a href="/starships">Vaisseaux</a>
-                <a href="/vehicles">Véhicules</a>
-            </div>
-        </nav>
-    </header>
-
     <main class="wrap">
         <h1 class="search-results-title">Résultats pour "{{.Query}}"</h1>
         <p class="total-count">{{.Count}} résultat(s) trouvé(s) dans la base de données.</p>

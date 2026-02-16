@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Star Wars - Véhicules</title>
+    <link rel="stylesheet" href="/static/css/site.css">
     <link rel="stylesheet" href="/static/css/vehicules.css">
     <link rel="stylesheet" href="/static/css/search.css">
+    <link rel="stylesheet" href="/static/css/favorites.css">
 </head>
 <body>
     <header class="bar_de_nav">
@@ -15,54 +17,71 @@
                 <a href="/films">Films</a>
                 <a href="/planets">Planètes</a>
             </div>
+
             <div class="nav-center">
+                </form>
                 <a href="/"><img src="/static/photos/Star_Wars_Logo.svg-removebg-preview.png" alt="Star Wars" class="nav-logo"></a>
             </div>
+
             <div class="nav-right">
                 <a href="/species">Espèces</a>
                 <a href="/starships">Vaisseaux</a>
                 <a href="/vehicles">Véhicules</a>
+                <a href="/favorites" class="nav-fav-link">★ Favoris</a>
             </div>
         </nav>
     </header>
-    <body>
-    <div class="top-search-bar">
-        <form action="/search" method="GET" class="search-form">
-            <input type="text" name="query" placeholder="Rechercher..." required>
-            <button type="submit">GO</button>
-        </form>
-    </div>
-    <header class="bar_de_nav">
+
+    <form action="/vehicles" method="GET" class="filter-form">
+        <input type="number" name="cost_max" placeholder="Coût Max" value="{{.Filters.CostMax}}">
+        <input type="number" name="cargo_min" placeholder="Capacité Min" value="{{.Filters.CargoMin}}">
+        <input type="number" name="length_max" placeholder="Longueur Max" value="{{.Filters.LengthMax}}">
+        
+        <button type="submit">Filtrer</button>
+        <a href="/vehicles" class="btn-reset">Réinitialiser</a>
+    </form>
+
     <main class="grid-container">
-        {{range .Results}}
+        {{range .Data.Results}}
         <div class="card">
+             <button class="fav-btn" data-id="{{.Name_v}}" data-type="vehicles" title="Ajouter aux favoris">
+                <svg class="death-star-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="9" cy="9" r="3" style="stroke:none; fill:rgba(0,0,0,0.3)"/> 
+                    <path d="M2 12 h20 M12 2 v20" style="stroke:rgba(0,0,0,0.2); stroke-width:0.5px; fill:none"/> 
+                    <path d="M4 6 h16 M4 18 h16" style="stroke:rgba(0,0,0,0.2); stroke-width:0.5px; fill:none"/>
+                </svg>
+            </button>
+
             <h2>{{.Name_v}}</h2>
             <div class="info-details">
                 <p><strong>Modèle :</strong> {{.Model}}</p>
                 <p><strong>Fabricant :</strong> {{.Manufacturer}}</p>
-                <p><strong>Classe de véhicule :</strong> {{.Vehicle_class}}</p>
+                <p><strong>Classe :</strong> {{.Vehicle_class}}</p>
                 <p><strong>Coût :</strong> {{if .Cost_in_credits}}{{.Cost_in_credits}} crédits{{else}}Inconnu{{end}}</p>
                 <p><strong>Longueur :</strong> {{.Length}} m</p>
                 <p><strong>Équipage / Passagers :</strong> {{.Crew}} / {{.Passengers}}</p>
-                <p><strong>Capacité de chargement :</strong> {{.Cargo_capacity}} kg</p>
+                <p><strong>Capacité :</strong> {{.Cargo_capacity}} kg</p>
                 <p><strong>Consommables :</strong> {{.Consumables}}</p>
             </div>
         </div>
         {{else}}
-        <p class="empty-msg">Aucun véhicule trouvé.</p>
+        <p class="empty-msg">Aucun véhicule ne correspond à vos critères de recherche.</p>
         {{end}}
     </main>
 
     <footer class="pagination">
-        {{if .Previous}}
-            <a href="?page=1" class="btn-nav">Précédent</a>
+        {{if .Data.Previous}}
+            <a href="?page=1&cost_max={{.Filters.CostMax}}&cargo_min={{.Filters.CargoMin}}&length_max={{.Filters.LengthMax}}" class="btn-nav">Précédent</a>
         {{end}}
-        {{if .Next}}
-            <a href="?page=2" class="btn-nav">Suivant</a>
+        {{if .Data.Next}}
+            <a href="?page=2&cost_max={{.Filters.CostMax}}&cargo_min={{.Filters.CargoMin}}&length_max={{.Filters.LengthMax}}" class="btn-nav">Suivant</a>
         {{else}}
             <span class="btn-nav" style="opacity:0.4;cursor:not-allowed;">Suivant</span>
         {{end}}
     </footer>
+
+    <script src="/static/js/favorites.js"></script>
 </body>
 </html>
 {{end}}

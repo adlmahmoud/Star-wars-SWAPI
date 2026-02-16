@@ -1,0 +1,104 @@
+/* assets/css/favorites.css */
+
+/* --- 1. STYLE DU BOUTON ÉTOILE (Sur toutes les cartes) --- */
+.card {
+    position: relative;
+}
+
+.fav-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+    transition: transform 0.2s ease;
+}
+
+.fav-btn:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.death-star-icon {
+    width: 30px;
+    height: 30px;
+    fill: #4a5568; /* Gris sombre (Éteint) */
+    stroke: #000;
+    stroke-width: 1px;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* Quand c'est actif (ajouté aux favoris) */
+.fav-btn.active .death-star-icon {
+    fill: #ffd54a; /* Jaune Star Wars */
+    stroke: #b38b00;
+    filter: drop-shadow(0 0 8px rgba(255, 213, 74, 0.6));
+}
+
+/* --- 2. STYLE SPÉCIFIQUE À LA PAGE FAVORIS --- */
+
+/* Le grand titre "VOS ÉLÉMENTS SAUVEGARDÉS" */
+.fav-header {
+    text-align: center;
+    color: var(--accent, #ffd54a); /* Utilise la variable globale ou le jaune par défaut */
+    margin: 40px 0;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(255, 213, 74, 0.3);
+}
+
+/* Le bouton "Retirer" rouge sur les cartes de la page favoris */
+.remove-btn { 
+    background: rgba(220, 38, 38, 0.15); 
+    border: 1px solid rgba(220, 38, 38, 0.5); 
+    color: #fca5a5; 
+    padding: 8px 16px; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    margin-top: 15px;
+    font-size: 13px;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.remove-btn:hover { 
+    background: rgba(220, 38, 38, 0.8); 
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.4);
+}
+
+/* Message quand la liste est vide */
+#empty-message {
+    text-align: center;
+    color: var(--muted, #9aa4b2);
+    font-size: 1.2em;
+    margin-top: 60px;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Lien favoris dans le menu (L'étoile jaune) */
+.nav-fav-link {
+    color: #ffd54a !important;
+    border: 1px solid rgba(255, 213, 74, 0.3);
+    padding: 6px 12px !important;
+    transition: all 0.3s ease;
+}
+
+.nav-fav-link:hover {
+    background: rgba(255, 213, 74, 0.1) !important;
+    box-shadow: 0 0 10px rgba(255, 213, 74, 0.2);
+}
