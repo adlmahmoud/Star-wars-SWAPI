@@ -11,7 +11,6 @@ L'application respecte l'architecture **MVC** (Model-View-Controller) et n'utili
 ### Thème et Données
 * **Thème :** Star Wars (Design sombre et futuriste, accents jaune emblématique).
 * **API utilisée :** [SWAPI (The Star Wars API)](https://swapi.dev/)
-* **API Complémentaire :** [Star Wars Visual Guide](https://starwars-visualguide.com/) (pour les images).
 
 ## 🚀 Fonctionnalités
 
@@ -47,7 +46,7 @@ L'application implémente l'ensemble des fonctionnalités demandées :
     Ouvrez votre navigateur et allez sur : `http://localhost:8080` (ou le port configuré).
 
 ## 📂 Structure du projet
-
+```bash
 /src
 ├── /cmd            # Point d'entrée (main.go)
 ├── /controllers    # Logique de contrôle (gestion des requêtes HTTP)
@@ -57,6 +56,7 @@ L'application implémente l'ensemble des fonctionnalités demandées :
 /templates           # Fichiers HTML (Go Templates)
 /assets              # CSS, Images, JS
 favorites.json       # Fichier de persistance des favoris
+```
 ## 📝 Gestion de projet (Synthèse)
 
 *La FAQ détaillée concernant l'organisation du travail, la répartition des tâches et la gestion du temps est disponible directement sur le site, dans la page **"À Propos"**, conformément aux consignes.*
