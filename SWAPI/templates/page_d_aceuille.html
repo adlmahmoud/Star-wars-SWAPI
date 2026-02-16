@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Star Wars Fanpage</title>
     <link rel="stylesheet" href="/static/css/page_accueil.css">
+    <link rel="stylesheet" href="/static/css/search.css">
     <meta name="theme-color" content="#000000">
 </head>
 <body class="scene loaded">
@@ -28,7 +29,14 @@
             </div>
         </nav>
     </header>
-
+    <body>
+    <div class="top-search-bar">
+        <form action="/search" method="GET" class="search-form">
+            <input type="text" name="query" placeholder="Rechercher..." required>
+            <button type="submit">GO</button>
+        </form>
+    </div>
+    <header class="bar_de_nav">
     <main class="wrap">
         <section class="hero_section">
             <div class="descrip_para">

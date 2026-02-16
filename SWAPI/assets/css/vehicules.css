@@ -60,3 +60,52 @@ html,body{height:100%;margin:0;font-family:Segoe UI,Roboto,Helvetica,Arial,sans-
     .card{padding:16px}
     .card h2{font-size:16px}
 }
+.top-search-bar {
+    background-color: #151b24; /* Gris sombre bleuté */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 200; /* Au-dessus du reste */
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-form input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #333;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: #cbd5e1;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    width: 250px;
+}
+
+.search-form input:focus {
+    border-color: #ffd54a; /* Jaune Star Wars au focus */
+    box-shadow: 0 0 8px rgba(255, 213, 74, 0.2);
+}
+
+.search-form button {
+    background: #ffd54a;
+    color: #000;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.search-form button:hover {
+    transform: scale(1.05);
+    background: #ffea8a;
+}

@@ -1,0 +1,85 @@
+/* assets/css/search.css */
+
+/* La barre qui contient le formulaire */
+.top-search-bar {
+    background-color: #151b24; /* Gris sombre qui va bien avec le noir */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0; /* Collé au header */
+}
+
+/* Le formulaire lui-même */
+.search-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Le champ de texte */
+.search-form input {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid #333;
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: #cbd5e1;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+    width: 300px;
+}
+
+.search-form input:focus {
+    border-color: #ffd54a; /* Jaune Star Wars */
+    box-shadow: 0 0 10px rgba(255, 213, 74, 0.15);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Le bouton GO */
+.search-form button {
+    background: #ffd54a;
+    color: #0b0b0b;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.search-form button:hover {
+    transform: translateY(-2px);
+    background: #ffea8a;
+    box-shadow: 0 4px 12px rgba(255, 213, 74, 0.3);
+}
+
+/* --- Style spécifique pour la page de résultats (search.html) --- */
+.search-results-title {
+    color: #ffd54a;
+    text-align: center;
+    margin: 40px 0 10px;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.total-count {
+    text-align: center;
+    color: #9aa4b2;
+    margin-bottom: 50px;
+    font-style: italic;
+}
+
+.category-title {
+    color: #fff;
+    border-left: 4px solid #ffd54a;
+    padding-left: 15px;
+    margin: 40px 0 20px;
+    font-size: 1.5em;
+}

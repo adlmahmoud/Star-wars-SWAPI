@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Star Wars - Espèces</title>
-    <link rel="stylesheet" href="/static/css/especes.css">
+    <link rel="stylesheet" href="/static/css/site.css">
+    <link rel="stylesheet" href="/static/css/search.css">
 </head>
 <body>
     <header class="bar_de_nav">
@@ -24,7 +25,14 @@
             </div>
         </nav>
     </header>
-
+    <body>
+    <div class="top-search-bar">
+        <form action="/search" method="GET" class="search-form">
+            <input type="text" name="query" placeholder="Rechercher..." required>
+            <button type="submit">GO</button>
+        </form>
+    </div>
+    <header class="bar_de_nav">
     <main class="grid-container">
         {{range .Results}}
         <div class="card">
@@ -51,8 +59,6 @@
         {{end}}
         {{if .Next}}
             <a href="?page=2" class="btn-nav">Suivant</a>
-        {{else}}
-            <span class="btn-nav" style="opacity:0.4;cursor:not-allowed;">Suivant</span>
         {{end}}
     </footer>
 </body>

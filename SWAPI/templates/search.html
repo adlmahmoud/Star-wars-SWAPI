@@ -1,0 +1,146 @@
+{{define "search"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Recherche : {{.Query}} - Star Wars</title>
+    <link rel="stylesheet" href="/static/css/personnages.css">
+    <link rel="stylesheet" href="/static/css/site.css">
+    <link rel="stylesheet" href="/static/css/search.css">
+</head>
+<body>
+
+    <div class="top-search-bar">
+        <form action="/search" method="GET" class="search-form">
+            <input type="text" name="query" value="{{.Query}}" placeholder="Nouvelle recherche..." required>
+            <button type="submit">GO</button>
+        </form>
+    </div>
+
+    <header class="bar_de_nav">
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="/characters">Personnages</a>
+                <a href="/films">Films</a>
+                <a href="/planets">Planètes</a>
+            </div>
+            <div class="nav-center">
+                <a href="/"><img src="/static/photos/Star_Wars_Logo.svg-removebg-preview.png" alt="Star Wars" class="nav-logo"></a>
+            </div>
+            <div class="nav-right">
+                <a href="/species">Espèces</a>
+                <a href="/starships">Vaisseaux</a>
+                <a href="/vehicles">Véhicules</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="wrap">
+        <h1 class="search-results-title">Résultats pour "{{.Query}}"</h1>
+        <p class="total-count">{{.Count}} résultat(s) trouvé(s) dans la base de données.</p>
+
+        {{if .Characters}}
+            <h2 class="category-title">Personnages</h2>
+            <div class="grid-container">
+                {{range .Characters}}
+                <div class="card">
+                    <h2>{{.Name_c}}</h2>
+                    <div class="info">
+                        <p><strong>Genre :</strong> {{.Gender}}</p>
+                        <p><strong>Naissance :</strong> {{.Birth_year}}</p>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        {{end}}
+
+        {{if .Films}}
+            <h2 class="category-title">Films</h2>
+            <div class="grid-container">
+                {{range .Films}}
+                <div class="card">
+                    <h2>{{.Titre}}</h2>
+                    <div class="info">
+                        <p><strong>Date :</strong> {{.Release_date}}</p>
+                        <p><strong>Directeur :</strong> {{.Director}}</p>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        {{end}}
+
+        {{if .Planets}}
+            <h2 class="category-title">Planètes</h2>
+            <div class="grid-container">
+                {{range .Planets}}
+                <div class="card">
+                    <h2>{{.Name_p}}</h2>
+                    <div class="info">
+                        <p><strong>Climat :</strong> {{.Climate}}</p>
+                        <p><strong>Population :</strong> {{.Population}}</p>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        {{end}}
+
+        {{if .Starships}}
+            <h2 class="category-title">Vaisseaux</h2>
+            <div class="grid-container">
+                {{range .Starships}}
+                <div class="card">
+                    <h2>{{.Name_St}}</h2>
+                    <div class="info">
+                        <p><strong>Modèle :</strong> {{.Model}}</p>
+                        <p><strong>Classe :</strong> {{.Starship_class}}</p>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        {{end}}
+
+        {{if .Vehicles}}
+            <h2 class="category-title">Véhicules</h2>
+            <div class="grid-container">
+                {{range .Vehicles}}
+                <div class="card">
+                    <h2>{{.Name_v}}</h2>
+                    <div class="info">
+                        <p><strong>Modèle :</strong> {{.Model}}</p>
+                        <p><strong>Coût :</strong> {{.Cost_in_credits}} crédits</p>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        {{end}}
+
+        {{if .Species}}
+            <h2 class="category-title">Espèces</h2>
+            <div class="grid-container">
+                {{range .Species}}
+                <div class="card">
+                    <h2>{{.Name_s}}</h2>
+                    <div class="info">
+                        <p><strong>Classification :</strong> {{.Classification}}</p>
+                        <p><strong>Langue :</strong> {{.Language}}</p>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        {{end}}
+
+        {{if eq .Count 0}}
+            <div style="text-align:center; padding: 50px;">
+                <h3 style="color:#9aa4b2;">Ces droïdes ne sont pas ceux que vous recherchez...</h3>
+                <p style="color:#666;">Aucun résultat trouvé pour "{{.Query}}".</p>
+            </div>
+        {{end}}
+    </main>
+
+    <footer class="les_droits">
+        <p>Projet d'étude - Azul fella-wen</p>
+    </footer>
+
+</body>
+</html>
+{{end}}
